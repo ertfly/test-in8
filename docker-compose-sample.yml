@@ -1,0 +1,45 @@
+version: '2'
+services:
+  front:
+    container_name: telemetry.front
+    build: ./.docker/node
+    env_file: 
+      - ./front/.env
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./front:/app
+    networks:
+      - dev-net
+
+  back:
+    container_name: telemetry.back
+    build: ./.docker/php
+    restart: always
+    ports:
+      - '8031:80'
+    volumes:
+      - ./back:/app
+    networks:
+      - dev-net
+
+  db:
+    container_name: telemetry.db
+    image: mongo:4.4.6
+    command: mongod --serviceExecutor adaptive
+    restart: always
+    ports:
+      - '27024:27017'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=telemetry
+      - MONGO_INITDB_ROOT_PASSWORD=Tele@1029
+      - MONGO_INITDB_DATABASE=telemetry
+    networks:
+      - dev-net
+    volumes:
+      - ./.db:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      
+networks:
+  dev-net:
+    external: true
