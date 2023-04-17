@@ -1,7 +1,7 @@
 version: '2'
 services:
   front:
-    container_name: telemetry.front
+    container_name: test.in8.front
     build: ./.docker/node
     env_file: 
       - ./front/.env
@@ -13,7 +13,7 @@ services:
       - dev-net
 
   back:
-    container_name: telemetry.back
+    container_name: test.in8.back
     build: ./.docker/php
     restart: always
     ports:
@@ -24,22 +24,21 @@ services:
       - dev-net
 
   db:
-    container_name: telemetry.db
-    image: mongo:4.4.6
-    command: mongod --serviceExecutor adaptive
+    container_name: test.in8.db
+    image: mariadb
     restart: always
     ports:
-      - '27024:27017'
+      - '3306:3306'
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=telemetry
-      - MONGO_INITDB_ROOT_PASSWORD=Tele@1029
-      - MONGO_INITDB_DATABASE=telemetry
+      MYSQL_ROOT_PASSWORD: Test@3661
+      MYSQL_DATABASE: testin8
+      MYSQL_USER: testin8
+      MYSQL_PASSWORD: Test@3661
+    volumes: 
+      - ./.db:/var/lib/mysql
     networks:
       - dev-net
-    volumes:
-      - ./.db:/data/db
-      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
-      
+
 networks:
   dev-net:
     external: true
