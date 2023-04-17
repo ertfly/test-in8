@@ -1,0 +1,90 @@
+header {
+    height: 70px;
+    background-color: #292929;
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 10px 0;
+    z-index: 15;
+}
+
+header .logo img {
+    max-height: 50px;
+}
+
+header .menus {
+    height: 70px;
+}
+
+header .menus .menus-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 70px;
+    padding: 0 15px;
+}
+
+header .menus .menus-item:hover {
+    background-color: #333;
+}
+
+header .menus .menus-item span {
+    color: #fff;
+}
+
+header .menus .menus-item:hover > .menus-sub {
+    display: block !important;
+}
+
+header .menus .menus-item .menus-sub {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 16;
+}
+
+header .menus .menus-item .menus-sub {
+    min-width: 200px;
+    background: #ccc;
+    display: none;
+}
+
+/* header .menus .menus-item .menus-sub .menus-sub-items {
+    
+} */
+
+header .menus .menus-item .menus-sub .menus-sub-items a {
+    display: block;
+    color: #333;
+    padding: 10px;
+}
+header .menus .menus-item .menus-sub .menus-sub-items a:hover,
+header .menus .menus-item .menus-sub .menus-sub-items a:hover i {
+    text-decoration: none;
+    color: #fff;
+    background-color: #999;
+}
+header .menus .menus-item .menus-sub .menus-sub-items a i {
+    width: 30px;
+    text-align: center;
+}
+
+header .icons .icons-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #999;
+}
+
+header .icons .icons-item i {
+    color: #999;
+}
+
+header .icons .icons-item:hover {
+    border: 1px solid #fff;
+}
+
+header .icons .icons-item:hover i {
+    color: #fff;
+}
