@@ -8,4 +8,4 @@ RUN apt-get update && \
 
 RUN git config --global --add safe.directory /app
 
-CMD yarn $YARN_COMMAND
+CMD npm install && yarn install && yarn $YARN_COMMAND
