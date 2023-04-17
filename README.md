@@ -98,6 +98,11 @@ $ docker-compose up -d --build
 ```
 > **_NOTA:_**  O comando reflete a versão do docker que não tem o docker-compose imbutido.
 
+- Aguarde finalizar a instalação do npm install e yarn install, você pode acompanhar pelo comando
+```
+$ docker logs test.in8.back -f
+```
+
 - Ao finalizar vamos instalar os pacotes das dependências
 ```
 $ docker exec -it test.in8.back composer install
